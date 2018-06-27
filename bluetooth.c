@@ -46,7 +46,7 @@ void Serial_Isr(void) interrupt 4
     }
 }
 //
-unsigned char Command_Token(const unsigned char *bcomm)
+void Command_Token(const unsigned char *bcomm)
 {
     int x=0,y=0,i;
     for(i=0;bcomm[i];i++)
@@ -62,3 +62,6 @@ unsigned char Command_Token(const unsigned char *bcomm)
 
 }
 void sendserial(char *s, int n)
+{
+
+}
