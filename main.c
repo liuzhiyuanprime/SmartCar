@@ -29,9 +29,10 @@ main(void)
                     Back();
                     break; //后
                 case '3':
-                    Left(); //左
+                    Left();
+					break ;//左
                 case '4':
-                    Right;
+                    Right();
                     break; //右
                 case '5':
                     Circle_Left();
