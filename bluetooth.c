@@ -1,8 +1,8 @@
 #include "bluetooth.h"
 
 bit command_finish; //整条接收完
-unsigned char recbuf[20];
-unsigned char command_team[3][15];
+unsigned char recbuf[20] = {0};
+unsigned char command_team[3][15] = {0};
 
 //串口初始化
 void Serial_Init(void)
@@ -48,20 +48,19 @@ void Serial_Isr(void) interrupt 4
 //
 void Command_Token(const unsigned char *bcomm)
 {
-    int x=0,y=0,i;
-    for(i=0;bcomm[i];i++)
+    int x = 0, y = 0, i;
+    for (i = 0; bcomm[i] != '!'; i++)
     {
-        if(bcomm[i]=='-')
+        if (bcomm[i] == '-')
         {
+            command_team[x][y++] = '\0';
             x++;
-            y=0;
+            y = 0;
             continue;
         }
-        command_team[x][y++]=bcomm[i];
+        command_team[x][y++] = bcomm[i];
     }
-
 }
 void sendserial(char *s, int n)
 {
-
 }
