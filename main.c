@@ -19,18 +19,18 @@ main(void)
             Command_Token(recbuf); //解析字符串
             if (!strcmp(command_team[1], "control"))
             {
-                
+
                 switch (command_team[2][0])
                 {
                 case '1':
-                   Forward();
+                    Forward();
                     break; //前
                 case '2':
                     Back();
                     break; //后
                 case '3':
                     Left();
-					break ;//左
+                    break; //左
                 case '4':
                     Right();
                     break; //右
@@ -41,6 +41,7 @@ main(void)
                     Circle_Right();
                     break; // 右旋转
                 case '7':
+                    Hua();
                     break; //花样
                 case '0':
                     Stop();

@@ -20,8 +20,8 @@ void Back(void)
 }
 void Left(void)
 {
-EN1 = 0;
-    EN2 = 0; 
+    EN1 = 0;
+    EN2 = 0;
     EN1 = 1;
     EN2 = 1; //电机使能
     IN1 = 0;
@@ -31,8 +31,8 @@ EN1 = 0;
 }
 void Right(void)
 {
-EN1 = 0;
-    EN2 = 0; 
+    EN1 = 0;
+    EN2 = 0;
     EN1 = 1;
     EN2 = 1; //电机使能
     IN1 = 0;
@@ -57,6 +57,24 @@ void Circle_Right(void)
     IN2 = 1; //左电机的正转
     IN3 = 0;
     IN4 = 1; //右电机的正转
+}
+void Hua(void)
+{
+    Forward();
+    delay(2000);
+    Circle_Left();
+    delay(500);
+    Circle_Right();
+    delay(200);
+    Left();
+    delay(1000);
+    Right();
+    delay(1000);
+    Back();
+    delay(2000);
+    Forward();
+    delay(1500);
+    Stop();
 }
 void Stop(void)
 {

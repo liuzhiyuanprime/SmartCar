@@ -1,6 +1,7 @@
 #ifndef __CARBASIC_H__
 #define __CARBASIC_H__
 #include <reg52.h>
+#include "delay.h"
 //定义6个小车驱动模块IO口，例如
 // sbit ENL=P1^4; 代表左电机使能端：
 // 高电平使能
@@ -19,5 +20,6 @@ void Left(void);
 void Right(void);
 void Circle_Left(void);
 void Circle_Right(void);
+void Hua(void);
 void Stop(void);
 #endif
