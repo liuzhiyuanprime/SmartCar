@@ -1,4 +1,4 @@
-#include <reg52.h>
+#include "bluetooth.h"
 
 bit command_finish; //整条接收完
 unsigned char recbuf[20];
