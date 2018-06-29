@@ -3,6 +3,7 @@
 #include "bluetooth.h"
 #include "carbasic.h"
 #include "timer.h"
+#include <stdlib.h>
 
 extern bit command_finish;
 extern unsigned char recbuf[20];
@@ -12,7 +13,7 @@ main(void)
 {
     // 串口初始化
     Serial_Init();
-	timer1_init();
+    timer1_init();
 
     while (1)
     {
@@ -54,8 +55,8 @@ main(void)
             }
             if (!strcmp(command_team[1], "speed"))
             {
-                int n = (command_team[2][0]-'0')*10 + (command_team[2][1]-'0');
-                 pwm = n > 80 ? 80 : n;
+                int n = atoi(command_team[2]);
+                pwm = n > 80 ? 80 : n;
             }
         }
     }
