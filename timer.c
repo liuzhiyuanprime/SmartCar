@@ -1,5 +1,7 @@
 #include "timer.h"
 
+ sbit EN1 = P1 ^ 4; // 高电平左电机使能
+ sbit EN2 = P1 ^ 5; // 高电平右电机使能
 void timer1_init(void)
 {
     TMOD = TMOD | 0x10; //定时器1，工作方式1
