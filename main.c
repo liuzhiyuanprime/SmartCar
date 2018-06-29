@@ -53,7 +53,8 @@ main(void)
             if (!strcmp(command_team[1], "speed"))
             {
                 int n = (command_team[2][0]-'0')*10 + (command_team[2][1]-'0');
-                pwm = n > 80 ? 80 : n;
+                // pwm = n > 80 ? 80 : n;
+                pwm = 10;
             }
         }
     }
