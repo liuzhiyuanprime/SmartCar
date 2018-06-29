@@ -28,9 +28,7 @@ void infrared_avoid()
 {
     if (!LEFT_A && !RIGHT_A)
     {
-        Back();
-        delay(50);
-        Circle_Left();
+        Forward();
     }
     else if (!LEFT_A && RIGHT_A)
     {
@@ -42,7 +40,9 @@ void infrared_avoid()
     }
     else
     {
-        Forward();
+        Back();
+        delay(50);
+        Circle_Left();
     }
 }
 void infrared_follow()
