@@ -28,21 +28,24 @@ void infrared_avoid()
 {
     if (!LEFT_A && !RIGHT_A)
     {
-        Forward();
+        Back();
+        delay(500);
+        Circle_Left();
+        delay(500;
     }
     else if (!LEFT_A && RIGHT_A)
     {
         Circle_Right();
+        delay(500);
     }
     else if (LEFT_A && !RIGHT_A)
     {
         Circle_Left();
+        delay(500);
     }
     else
     {
-        Back();
-        delay(50);
-        Circle_Left();
+        Forward();
     }
 }
 void infrared_follow()
