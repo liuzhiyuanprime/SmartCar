@@ -14,15 +14,36 @@ void infrared_track()
     else if (!LEFT_T && RIGHT_T)
     {
         Right();
-        delay(100);
-    }else if(LEFT_T && !RIGHT_T)
+        delay(50);
+    }
+    else if (LEFT_T && !RIGHT_T)
     {
         Left();
-        delay(100);
+        delay(50);
     }
+    else
+        Stop();
 }
 void infrared_avoid()
 {
+    if (!LEFT_A && !RIGHT_A)
+    {
+        Back();
+        delay(50);
+        Circle_Left();
+    }
+    else if (!LEFT_A && RIGHT_A)
+    {
+        Circle_Right();
+    }
+    else if (LEFT_A && !RIGHT_A)
+    {
+        Circle_Left();
+    }
+    else
+    {
+        Forward();
+    }
 }
 void infrared_follow()
 {

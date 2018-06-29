@@ -59,19 +59,13 @@ main(void)
                 int n = atoi(command_team[2]);
                 pwm = n > 80 ? 80 : n;
             }
-            else if(!strcmp(command_team[1],"track"))
+            else if (!strcmp(command_team[1], "track"))
             {
-                
-                switch (command_team[2][0])
-                {
-                    case '1':
-                        infrared_track();
-                        break;
-                
-                    default:
-                        Stop();
-                        break;
-                }
+                command_team[2][0] == '1' ? infrared_track() : Stop();
+            }
+            else if (!strcmp(command_team[1], "infrared"))
+            {
+                command_team[2][0] == '1' ? infrared_avoid() : Stop();
             }
         }
     }
