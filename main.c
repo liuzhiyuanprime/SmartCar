@@ -4,6 +4,7 @@
 #include "carbasic.h"
 #include "timer.h"
 #include <stdlib.h>
+#include "infrare.h"
 
 extern bit command_finish;
 extern unsigned char recbuf[20];
@@ -53,10 +54,24 @@ main(void)
                     break; //停止
                 }
             }
-            if (!strcmp(command_team[1], "speed"))
+            else if (!strcmp(command_team[1], "speed"))
             {
                 int n = atoi(command_team[2]);
                 pwm = n > 80 ? 80 : n;
+            }
+            else if(!strcmp(command_team[1],"track"))
+            {
+                
+                switch (command_team[2][0])
+                {
+                    case '1':
+                        infrared_track();
+                        break;
+                
+                    default:
+                        Stop();
+                        break;
+                }
             }
         }
     }
