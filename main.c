@@ -2,11 +2,12 @@
 #include <string.h>
 #include "bluetooth.h"
 #include "carbasic.h"
+#include "timer.h"
 
 extern bit command_finish;
 extern unsigned char recbuf[20];
 extern unsigned char command_team[3][15];
-
+extern unsigned int pwm;
 main(void)
 {
     // 串口初始化
@@ -17,6 +18,7 @@ main(void)
         {
             command_finish = 0;
             Command_Token(recbuf); //解析字符串
+
             if (!strcmp(command_team[1], "control"))
             {
 
@@ -47,6 +49,11 @@ main(void)
                     Stop();
                     break; //停止
                 }
+            }
+            if (!strcmp(command_team[1], "speed"))
+            {
+                int n = atoi(command_team[2]);
+                pwm = n > 80 ? 80 : n;
             }
         }
     }
