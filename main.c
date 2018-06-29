@@ -12,6 +12,8 @@ main(void)
 {
     // 串口初始化
     Serial_Init();
+	timer1_init();
+
     while (1)
     {
         if (command_finish)
@@ -53,8 +55,7 @@ main(void)
             if (!strcmp(command_team[1], "speed"))
             {
                 int n = (command_team[2][0]-'0')*10 + (command_team[2][1]-'0');
-                // pwm = n > 80 ? 80 : n;
-                pwm = 10;
+                 pwm = n > 80 ? 80 : n;
             }
         }
     }
