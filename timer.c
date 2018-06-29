@@ -32,3 +32,4 @@ void timer1_Isr(void) interrupt 3
     {
         timeOutCounter = 0;
     }
+}
