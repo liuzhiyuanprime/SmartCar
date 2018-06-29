@@ -20,13 +20,13 @@ void timer1_Isr(void) interrupt 3
     timeOutCounter++;
     if (timeOutCounter <= pwm) //在pwm范围内，使能
     {
-        ENL = 1;
-        ENR = 1;
+        EN1 = 1;
+        EN2 = 1;
     }
     else
     {
-        ENL = 0;
-        ENR = 0;
+        EN1 = 0;
+        EN2 = 0;
     }                         //在pwm范围外，禁用
     if (timeOutCounter == 80) //一个pwm周期结束，重新开始计数
     {
