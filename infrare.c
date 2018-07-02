@@ -31,7 +31,7 @@ void infrared_avoid()
         Back();
         delay(500);
         Circle_Left();
-        delay(500;
+        delay(500);
     }
     else if (!LEFT_A && RIGHT_A)
     {
