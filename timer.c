@@ -1,6 +1,5 @@
 #include "timer.h"
 
-
 void timer1_init(void)
 {
     TMOD = TMOD | 0x10; //定时器1，工作方式1
@@ -11,7 +10,8 @@ void timer1_init(void)
     TR1 = 1; //启动计数
 }
 
-unsigned int timeOutCounter = 0;
+unsigned int timeOutCounter = 0,
+             timercsb = 0;
 unsigned int pwm = 25;
 
 void timer1_Isr(void) interrupt 3
@@ -33,4 +33,19 @@ void timer1_Isr(void) interrupt 3
     {
         timeOutCounter = 0;
     }
+    timercsb++;
+}
+
+void timer0_init(void)
+{
+    TMOD = TMOD | 0x01; //定时器1，工作方式1
+    TH0 = 0;            //0.25ms定时
+    TL0 = 0;
+    ET0 = 1; //开定时器1中断
+    EA = 1;  //开总中断
+}
+
+void timer0_Isr(void) interrupt 1
+{
+    ECHO = 0;
 }
