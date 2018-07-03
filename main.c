@@ -10,8 +10,12 @@
 #define uchar unsigned char
 #define uint unsigned int
 
-sbit DS=P2^2;        
-uint temp;  
+sbit DS = P2 ^ 2;
+uint temp;
+uchar flag1;   
+sbit dula=P2^6;
+sbit wela=P2^7;
+
 extern bit command_finish;
 extern unsigned char recbuf[20];
 extern unsigned char command_team[3][15];
@@ -83,15 +87,15 @@ main(void)
             command_team[2][0] == '1' ? csbavoid() : Stop();
         if (timersend >= 8000)
         {
-		 uint w ;
-          char *ss = "*cmd-getdata-33.5!";
-			timersend = 0;
+            uint w;
+            char ss[] = "*cmd-getdata-33.5!";
+            timersend = 0;
             tmpchange();
-           w = tmp();
-            ss[12] = w % 1000 / 100;
-            ss[13] = w % 100 / 10;
-            ss[15] = w % 10;
-            sendserial(ss, strlen(ss));
+            w = tmp();
+            ss[13] = w % 1000 / 100 + '0';
+            ss[14] = w % 100 / 10 + '0';
+            ss[16] = w % 10 + '0';
+            sendserial(ss, 18);
         }
     }
 }
@@ -109,17 +113,21 @@ void dsreset(void)
         i--;
 }
 
-bit tmpreadbit(void)       //read a bit
+bit tmpreadbit(void) //read a bit
 {
-   uint i;
-   bit dat;
-   DS=0;i++;          //i++ for delay
-   DS=1;i++;i++;
-   dat=DS;
-   i=8;while(i>0)i--;
-   return (dat);
+    uint i;
+    bit dat;
+    DS = 0;
+    i++; //i++ for delay
+    DS = 1;
+    i++;
+    i++;
+    dat = DS;
+    i = 8;
+    while (i > 0)
+        i--;
+    return (dat);
 }
-
 
 uchar tmpread(void)
 {
