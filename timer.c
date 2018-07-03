@@ -11,7 +11,8 @@ void timer1_init(void)
 }
 
 unsigned int timeOutCounter = 0,
-             timercsb = 0;
+             timercsb = 0,
+             timersend = 0;
 unsigned int pwm = 25;
 
 void timer1_Isr(void) interrupt 3
@@ -34,6 +35,7 @@ void timer1_Isr(void) interrupt 3
         timeOutCounter = 0;
     }
     timercsb++;
+    timersend++;
 }
 
 void timer0_init(void)

@@ -39,7 +39,7 @@ void csbavoid()
         StartModule();
         Timer_Count();
         distance();
-        if (s < 40)
+        if (s < 100)
         {
             //开始避障
             Back();
