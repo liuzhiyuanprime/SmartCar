@@ -11,10 +11,11 @@
 #define uint unsigned int
 
 sbit DS = P2 ^ 2;
-uint temp;
 uchar flag1;   
 sbit dula=P2^6;
 sbit wela=P2^7;
+char ss[20] = {"*cmd-getdata-33.5!"};
+
 
 extern bit command_finish;
 extern unsigned char recbuf[20];
@@ -30,7 +31,6 @@ main(void)
     Serial_Init();
     timer1_init();
     timer0_init();
-    sendserial("hello world", 11);
 
     while (1)
     {
@@ -88,7 +88,6 @@ main(void)
         if (timersend >= 8000)
         {
             uint w;
-            char ss[] = "*cmd-getdata-33.5!";
             timersend = 0;
             tmpchange();
             w = tmp();
@@ -184,6 +183,7 @@ void tmpchange(void)
 uint tmp()
 {
     float tt;
+	unsigned int temp  ;
     uchar a, b;
     dsreset();
     delay(1);
@@ -191,9 +191,7 @@ uint tmp()
     tmpwritebyte(0xbe);
     a = tmpread();
     b = tmpread();
-    temp = b;
-    temp <<= 8;
-    temp = temp | a;
+   temp = (b<<8)|a;
     tt = temp * 0.0625;
     temp = tt * 10 + 0.5;
     return temp;
