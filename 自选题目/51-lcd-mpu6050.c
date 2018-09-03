@@ -15,6 +15,7 @@ sbit SCL = P3^ 5;  //IIC时钟引脚定义
 sbit SDA = P3 ^ 4;  //IIC数据引脚定义
 sbit MUSIC1 = P3 ^ 2;
 sbit MUSIC2 = P3 ^ 3;
+sbit MUSIC3 = P3 ^ 6;
 sbit LCM_RS = P1 ^ 0; //LCD1602命令端口
 sbit LCM_RW = P1 ^ 1; //LCD1602命令端口
 sbit LCM_EN = P2 ^ 5; //LCD1602命令端口
@@ -393,26 +394,37 @@ void main()
 		Display10BitData(y2, 7, 1);  //显示Y轴角速度
 		Display10BitData(z2, 12, 1); //显示Z轴角速度
 		y1 /= 64;
-		if (y1 > 78 || y1 < -78)
+		if (y1 > 78)
 		{
 			pwm = 20;
 			if (mu != 1)
 			{
-				MUSIC1 = 1;
-				mu = 1;
-				delay(200);
 				MUSIC1 = 0;
+				mu = 1;
+				delay(1500);
+				MUSIC1 = 1;
+			}
+		}
+		else if(y1<-78)
+		{
+			pwm = 60;
+			if (mu != 2)
+			{
+				MUSIC2 = 0;
+				mu = 2;
+				delay(1500);
+				MUSIC2 = 1;
 			}
 		}
 		else
 		{
-			pwm = 30;
-			if (mu != 2)
+			pwm = 40;
+			if (mu != 3)
 			{
-				MUSIC2 = 1;
-				mu = 2;
-				delay(200);
-				MUSIC2 = 0;
+				MUSIC3 = 0;
+				mu = 3;
+				delay(1500);
+				MUSIC3 = 1;
 			}
 		}
 		delay(500);
