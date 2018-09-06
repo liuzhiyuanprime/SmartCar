@@ -370,7 +370,7 @@ void Display10BitData(int value, uchar x, uchar y)
 }
 
 extern unsigned int pwm;
-
+int mu = 0;
 void main()
 {
 	delay(500);	//上电延时
@@ -385,8 +385,8 @@ void main()
 			z1 = GetData(ACCEL_ZOUT_H),
 			x2 = GetData(GYRO_XOUT_H),
 			y2 = GetData(GYRO_YOUT_H),
-			z2 = GetData(GYRO_ZOUT_H),
-			mu = 0;
+			z2 = GetData(GYRO_ZOUT_H);
+			
 		Display10BitData(x1, 2, 0);  //显示X轴加速度
 		Display10BitData(y1, 7, 0);  //显示Y轴加速度
 		Display10BitData(z1, 12, 0); //显示Z轴加速度
